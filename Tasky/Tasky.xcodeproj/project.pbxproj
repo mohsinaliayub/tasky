@@ -14,7 +14,7 @@
 		B6781FC92E1C701700747597 /* Exceptions for "Tasky" folder in "Tasky" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				Resources/Info.plist,
 			);
 			target = B6781FB62E1C701700747597 /* Tasky */;
 		};
@@ -147,7 +147,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 54L66DHDVH;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Tasky/Info.plist;
+				INFOPLIST_FILE = Tasky/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -179,7 +179,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 54L66DHDVH;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Tasky/Info.plist;
+				INFOPLIST_FILE = Tasky/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

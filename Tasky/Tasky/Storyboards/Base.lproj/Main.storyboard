@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="wqd-aW-iJz">
-                                <rect key="frame" x="0.0" y="118" width="393" height="666"/>
+                                <rect key="frame" x="0.0" y="159" width="393" height="625"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TodoItemCell" id="Q1Y-Zz-YQZ">
@@ -57,17 +57,27 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="jfW-Ao-kBb"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xb5-lQ-nM6">
+                                <rect key="frame" x="20" y="126" width="353" height="25"/>
+                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xb5-lQ-nM6" secondAttribute="trailing" constant="20" id="9QZ-TU-22N"/>
                             <constraint firstItem="wqd-aW-iJz" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="AyB-Mz-Wjd"/>
+                            <constraint firstItem="xb5-lQ-nM6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="BdC-50-gYf"/>
+                            <constraint firstItem="xb5-lQ-nM6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="EXe-ie-ouV"/>
                             <constraint firstItem="wqd-aW-iJz" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Efl-4c-LLk"/>
-                            <constraint firstItem="wqd-aW-iJz" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="NmH-Mj-6Ch"/>
+                            <constraint firstItem="wqd-aW-iJz" firstAttribute="top" secondItem="xb5-lQ-nM6" secondAttribute="bottom" constant="8" symbolic="YES" id="ZsK-yk-vSH"/>
                             <constraint firstItem="wqd-aW-iJz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vXE-Ni-RmP"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="todayLabel" destination="xb5-lQ-nM6" id="VDd-1U-zPc"/>
                         <outlet property="todoItemsTableView" destination="wqd-aW-iJz" id="SHk-zR-D2G"/>
                     </connections>
                 </viewController>

@@ -21,11 +21,34 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TodoItemCell" id="Q1Y-Zz-YQZ">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="50" width="393" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q1Y-Zz-YQZ" id="MPz-ej-Kf3">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7VP-qZ-cCM">
+                                                    <rect key="frame" x="20" y="11" width="315" height="20"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="X7u-Yz-Att">
+                                                    <rect key="frame" x="343" y="6.6666666666666643" width="30" height="29"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="H2L-6E-Kqb"/>
+                                                        <constraint firstAttribute="width" constant="30" id="t3R-Pe-Oxn"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="X7u-Yz-Att" secondAttribute="bottom" constant="7.6699999999999999" id="Dob-0I-Uqa"/>
+                                                <constraint firstItem="7VP-qZ-cCM" firstAttribute="centerY" secondItem="X7u-Yz-Att" secondAttribute="centerY" id="GuS-jb-hIb"/>
+                                                <constraint firstAttribute="trailing" secondItem="X7u-Yz-Att" secondAttribute="trailing" constant="20" symbolic="YES" id="Phe-kf-aee"/>
+                                                <constraint firstItem="X7u-Yz-Att" firstAttribute="leading" secondItem="7VP-qZ-cCM" secondAttribute="trailing" constant="8" symbolic="YES" id="Stp-Cv-KiV"/>
+                                                <constraint firstItem="7VP-qZ-cCM" firstAttribute="leading" secondItem="MPz-ej-Kf3" secondAttribute="leadingMargin" id="kWX-Sh-6sF"/>
+                                                <constraint firstItem="X7u-Yz-Att" firstAttribute="top" secondItem="MPz-ej-Kf3" secondAttribute="top" constant="6" id="sK7-dl-Jlv"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -54,6 +77,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

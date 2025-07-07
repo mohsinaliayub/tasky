@@ -23,13 +23,13 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        todoItemsManager.todoItems.count
+        todoItemsManager.todoItemsCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
         
-        let item = todoItemsManager.todoItems[indexPath.row]
+        let item = todoItemsManager.item(at: indexPath.row)
         configureCell(cell, for: item)
         
         return cell

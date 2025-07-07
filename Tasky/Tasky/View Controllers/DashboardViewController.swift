@@ -23,43 +23,13 @@ class DashboardViewController: UIViewController {
     
     private func updateDateLabel() {
         let todayDate = Date()
-        let components = Calendar.current.dateComponents([.weekday, .day, .month], from: todayDate)
         
-        let dayOfWeek = dayOfWeek(for: components.weekday)
-        let nameOfMonth = name(for: components.month)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE, MMMM d"
+        dateFormatter.locale = Locale(identifier: "de")
         
-        todayLabel.text = dayOfWeek + ", " + nameOfMonth + " " + String(components.day!)
-    }
-    
-    private func dayOfWeek(for day: Int?) -> String {
-        switch day {
-        case 1: return "Sunday"
-        case 2: return "Monday"
-        case 3: return "Tuesday"
-        case 4: return "Wednesday"
-        case 5: return "Thursday"
-        case 6: return "Friday"
-        case 7: return "Saturday"
-        default: return ""
-        }
-    }
-    
-    private func name(for month: Int?) -> String {
-        switch month {
-        case 1: return "January"
-        case 2: return "February"
-        case 3: return "March"
-        case 4: return "April"
-        case 5: return "May"
-        case 6: return "June"
-        case 7: return "July"
-        case 8: return "August"
-        case 9: return "September"
-        case 10: return "October"
-        case 11: return "November"
-        case 12: return "December"
-        default: return ""
-        }
+        let str = dateFormatter.string(from: todayDate)
+        todayLabel.text = str
     }
 }
 

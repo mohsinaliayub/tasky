@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  DashboardViewController.swift
 //  Tasky
 //
 //  Created by Mohsin Ali Ayub on 07.07.25.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class DashboardViewController: UIViewController {
     
     @IBOutlet private weak var todoItemsTableView: UITableView!
     
@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     
 }
 
-extension ViewController: UITableViewDataSource {
+extension DashboardViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         todoItemsManager.todoItemsCount
     }
@@ -45,6 +45,6 @@ extension ViewController: UITableViewDataSource {
     }
 }
 
-extension ViewController: UITableViewDelegate {
+extension DashboardViewController: UITableViewDelegate {
     
 }

@@ -12,15 +12,21 @@ struct TodoDetailView: View {
     @FocusState private var focused: Bool
     
     var body: some View {
-        TextField("", text: $todo)
-            .padding()
-            .background(
-                RoundedRectangle(cornerRadius: 12)
-                    .stroke(Color.gray.opacity(0.3), lineWidth: 1)
-            )
-            .onAppear {
-                focused = true
-            }
+        VStack {
+            TextField("", text: $todo)
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(Color.gray.opacity(0.3), lineWidth: 1)
+                )
+                .onAppear {
+                    focused = true
+                }
+                .padding()
+            
+            Spacer()
+        }
+        .navigationTitle("To-do Detail")
     }
 }
 

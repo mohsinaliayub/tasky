@@ -8,11 +8,22 @@
 import SwiftUI
 
 struct TodoDetailView: View {
+    @Binding var todo: String
+    @FocusState private var focused: Bool
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TextField("", text: $todo)
+            .padding()
+            .background(
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(Color.gray.opacity(0.3), lineWidth: 1)
+            )
+            .onAppear {
+                focused = true
+            }
     }
 }
 
 #Preview {
-    TodoDetailView()
+    TodoDetailView(todo: .constant("Learn iOS development"))
 }

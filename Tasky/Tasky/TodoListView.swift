@@ -19,18 +19,28 @@ struct TodoListView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading) {
+                VStack {
                     ForEach(todos, id: \.self) { todo in
-                        Text(todo)
-                            .font(.body)
-                            .kerning(1)
-                            .padding(.vertical, 8)
-                        Divider()
+                        TodoInfoView(todo: todo)
                     }
                 }
             }
             .padding()
             .navigationTitle("To-dos")
+        }
+    }
+}
+
+struct TodoInfoView: View {
+    let todo: String
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(todo)
+                .font(.body)
+                .kerning(1)
+                .padding(.vertical, 8)
+            Divider()
         }
     }
 }

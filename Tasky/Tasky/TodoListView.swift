@@ -20,8 +20,11 @@ struct TodoListView: View {
         NavigationStack {
             ScrollView {
                 VStack {
-                    ForEach(todos, id: \.self) { todo in
-                        TodoInfoView(todo: todo)
+                    ForEach(todos.indices, id: \.self) { index in
+                        NavigationLink(destination: TodoDetailView(todo: $todos[index])) {
+                            TodoInfoView(todo: todos[index])
+                        }
+                        .foregroundStyle(.primary)
                     }
                 }
             }
@@ -40,6 +43,7 @@ struct TodoInfoView: View {
                 .font(.body)
                 .kerning(1)
                 .padding(.vertical, 8)
+                .multilineTextAlignment(.leading)
             Divider()
         }
     }

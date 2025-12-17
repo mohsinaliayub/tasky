@@ -16,3 +16,9 @@ struct TodoItem: Identifiable {
     /// A unique identifier to identify todo items from each other.
     let id = UUID()
 }
+
+extension TodoItem: Equatable {
+    static func == (lhs: TodoItem, rhs: TodoItem) -> Bool {
+        return lhs.id == rhs.id
+    }
+}

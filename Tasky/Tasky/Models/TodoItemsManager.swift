@@ -15,8 +15,12 @@ struct TodoItemsManager {
         populateDummyItems()
     }
     
-    func updateTodoItem(_ item: TodoItem) {
+    mutating func updateTodoItem(_ item: TodoItem) {
+        guard let indexOfItem = todoItems.firstIndex(of: item) else {
+            return
+        }
         
+        todoItems[indexOfItem] = item
     }
     
     func getTodoItem(at index: Int) -> TodoItem {

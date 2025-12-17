@@ -8,23 +8,27 @@
 import Foundation
 
 struct TodoItemsManager {
-    private var todoItems: [TodoItem]
+    private(set) var todoItems: [TodoItem]
     
     init() {
         todoItems = []
         populateDummyItems()
     }
     
-    mutating func updateTodoItem(_ item: TodoItem) {
-        guard let indexOfItem = todoItems.firstIndex(of: item) else {
-            return
-        }
+    mutating func updateTodoItem(_ item: TodoItem, with title: String) {
+        guard let indexOfItem = index(of: item) else { return }
         
-        todoItems[indexOfItem] = item
+        todoItems[indexOfItem].title = title
     }
     
     func getTodoItem(at index: Int) -> TodoItem {
         todoItems[index]
+    }
+    
+    private func index(of item: TodoItem) -> Int? {
+        // Not going to use 'firstIndex(of:)', because with our implementation
+        // of 'Equatable' won't work on it.
+        todoItems.firstIndex { $0.id == item.id }
     }
     
     private mutating func populateDummyItems() {

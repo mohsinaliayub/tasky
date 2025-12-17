@@ -8,21 +8,15 @@
 import SwiftUI
 
 struct TodoListView: View {
-    @State private var todos = [
-        "Brush my teeth",
-        "Buy groceries",
-        "Learn iOS development",
-        "Clean the dishes",
-        "Read one chapter of Harry Potter & the Order of Pheonix"
-    ]
+    @ObservedObject var todoItemsVM = InMemoryTodoListViewModel()
     
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack {
-                    ForEach(todos.indices, id: \.self) { index in
-                        NavigationLink(destination: TodoDetailView(todo: $todos[index])) {
-                            TodoInfoView(todo: todos[index])
+                    ForEach(todoItemsVM.todoItems) { todoItem in
+                        NavigationLink(destination: TodoDetailView(todo: todoItem)) {
+                            TodoInfoView(todo: todoItem)
                         }
                         .foregroundStyle(.primary)
                     }
@@ -35,11 +29,11 @@ struct TodoListView: View {
 }
 
 struct TodoInfoView: View {
-    let todo: String
+    let todo: TodoItem
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(todo)
+            Text(todo.title)
                 .font(.body)
                 .kerning(1)
                 .padding(.vertical, 8)

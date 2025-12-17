@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct TodoDetailView: View {
-    @Binding var todo: String
+    let todo: TodoItem
+    @State private var todoTitle = ""
     @FocusState private var focused: Bool
     
     var body: some View {
         VStack {
-            TextField("", text: $todo)
+            TextField("", text: $todoTitle)
                 .padding()
                 .background(
                     RoundedRectangle(cornerRadius: 12)
@@ -31,5 +32,5 @@ struct TodoDetailView: View {
 }
 
 #Preview {
-    TodoDetailView(todo: .constant("Learn iOS development"))
+    TodoDetailView(todo: TodoItem(title: "Learn iOS development"))
 }

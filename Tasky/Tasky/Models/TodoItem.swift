@@ -18,7 +18,7 @@ struct TodoItem: Identifiable {
 }
 
 extension TodoItem: Equatable {
-    static func == (lhs: TodoItem, rhs: TodoItem) -> Bool {
-        return lhs.id == rhs.id
-    }
+//    static func == (lhs: TodoItem, rhs: TodoItem) -> Bool {
+//        return lhs.id == rhs.id
+//    }
 }

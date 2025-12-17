@@ -8,21 +8,21 @@
 import SwiftUI
 
 struct TodoListView: View {
-    @ObservedObject var todoItemsVM = InMemoryTodoListViewModel()
+    @ObservedObject var todoItemsVM: InMemoryTodoListViewModel
     
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack {
                     ForEach(todoItemsVM.todoItems) { todoItem in
-                        NavigationLink(destination: TodoDetailView(todo: todoItem)) {
+                        NavigationLink(destination: TodoDetailView(todo: todoItem).environmentObject(todoItemsVM)) {
                             TodoInfoView(todo: todoItem)
                         }
-                        .foregroundStyle(.primary)
                     }
                 }
             }
             .padding()
+            .foregroundStyle(.primary)
             .navigationTitle("To-dos")
         }
     }
@@ -44,5 +44,5 @@ struct TodoInfoView: View {
 }
 
 #Preview {
-    TodoListView()
+    TodoListView(todoItemsVM: InMemoryTodoListViewModel())
 }

@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct TaskyApp: App {
+    @StateObject private var todoItemsVM = InMemoryTodoListViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            TodoListView()
+            TodoListView(todoItemsVM: todoItemsVM)
         }
     }
 }

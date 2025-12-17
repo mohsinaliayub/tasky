@@ -16,12 +16,12 @@ class InMemoryTodoListViewModel: ObservableObject {
         populateDummyItems()
     }
     
-    func updateTodoItem(_ item: TodoItem) {
-        guard let indexOfItem = todoItems.firstIndex(of: item) else {
+    func updateTodoItem(_ item: TodoItem, with title: String) {
+        guard let indexOfItem = todoItems.firstIndex(where: { $0.id == item.id }) else {
             return
         }
         
-        todoItems[indexOfItem] = item
+        todoItems[indexOfItem].title = title
     }
     
     func getTodoItem(at index: Int) -> TodoItem {
@@ -34,5 +34,11 @@ class InMemoryTodoListViewModel: ObservableObject {
         todoItems.append(TodoItem(title: "Learn iOS development"))
         todoItems.append(TodoItem(title: "Clean the dishes"))
         todoItems.append(TodoItem(title: "Read One Chapter of Harry Potter & the Order of Pheonix"))
+    }
+}
+
+extension TodoItem: CustomDebugStringConvertible {
+    var debugDescription: String {
+        "\(title) -- \(id)"
     }
 }

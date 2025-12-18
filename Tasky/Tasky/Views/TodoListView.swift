@@ -23,7 +23,7 @@ struct TodoListView: View {
                         }
                 }
                 .listRowSeparator(.hidden)
-                .listRowInsets(.init(top: 12, leading: 8, bottom: 12, trailing: 0))
+                .listRowInsets(.init(top: 8, leading: 8, bottom: 8, trailing: 0))
             }
             .listStyle(.plain)
             .padding()
@@ -66,7 +66,7 @@ struct TodoInfoView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            title.padding(.vertical, 8)
+            title.padding(.vertical, 12)
             Divider()
         }
         .foregroundStyle(todo.isCompleted ? .gray.opacity(0.7) : .primary)

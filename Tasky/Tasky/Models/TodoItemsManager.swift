@@ -27,6 +27,12 @@ struct TodoItemsManager {
         todoItems[indexOfItem].isCompleted = isComplete
     }
     
+    mutating func deleteTodoItem(_ todoItem: TodoItem) {
+        guard let indexOfItem = index(of: todoItem) else { return }
+        
+        _ = todoItems.remove(at: indexOfItem)
+    }
+    
     func getTodoItem(at index: Int) -> TodoItem {
         todoItems[index]
     }

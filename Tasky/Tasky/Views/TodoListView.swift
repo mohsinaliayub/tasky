@@ -17,7 +17,7 @@ struct TodoListView: View {
                     NavigationLink(destination: TodoDetailView(todo: todoItem).environmentObject(todoItemsVM)) {
                         TodoInfoView(todo: todoItem)
                             .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                                Button(action: { }) {
+                                Button(action: { todoItemsVM.deleteTodoItem(todoItem) }) {
                                     Label("Delete", systemImage: "trash")
                                 }
                             }

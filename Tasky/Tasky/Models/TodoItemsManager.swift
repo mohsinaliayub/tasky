@@ -15,10 +15,16 @@ struct TodoItemsManager {
         populateDummyItems()
     }
     
-    mutating func updateTodoItem(_ item: TodoItem, with title: String) {
-        guard let indexOfItem = index(of: item) else { return }
+    mutating func updateTodoItem(_ todoItem: TodoItem, with title: String) {
+        guard let indexOfItem = index(of: todoItem) else { return }
         
         todoItems[indexOfItem].title = title
+    }
+    
+    mutating func updateIsCompleteStatus(_ isComplete: Bool, for todoItem: TodoItem) {
+        guard let indexOfItem = index(of: todoItem) else { return }
+        
+        todoItems[indexOfItem].isCompleted = isComplete
     }
     
     func getTodoItem(at index: Int) -> TodoItem {

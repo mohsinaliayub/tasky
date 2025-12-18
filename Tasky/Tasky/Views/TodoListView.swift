@@ -22,7 +22,9 @@ struct TodoListView: View {
                                 }
                             }
                             .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                                Button(action: { }) {
+                                Button(action: {
+                                    todoItemsVM.updateIsCompleteStatus(!todoItem.isCompleted, for: todoItem)
+                                }) {
                                     if todoItem.isCompleted {
                                         Label("Incomplete", systemImage: "checkmark.circle.dotted")
                                     } else {

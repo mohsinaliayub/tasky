@@ -18,6 +18,10 @@ class InMemoryTodoListViewModel: ObservableObject {
     func updateTodoItem(_ item: TodoItem, with title: String) {
         todoManager.updateTodoItem(item, with: title)
     }
+    
+    func updateIsCompleteStatus(_ isComplete: Bool, for todoItem: TodoItem) {
+        todoManager.updateIsCompleteStatus(isComplete, for: todoItem)
+    }
 }
 
 extension TodoItem: CustomDebugStringConvertible {

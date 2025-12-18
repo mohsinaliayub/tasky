@@ -12,15 +12,29 @@ struct TodoListView: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack {
-                    ForEach(todoItemsVM.todoItems) { todoItem in
-                        NavigationLink(destination: TodoDetailView(todo: todoItem).environmentObject(todoItemsVM)) {
-                            TodoInfoView(todo: todoItem)
-                        }
+            List {
+                ForEach(todoItemsVM.todoItems) { todoItem in
+                    NavigationLink(destination: TodoDetailView(todo: todoItem).environmentObject(todoItemsVM)) {
+                        TodoInfoView(todo: todoItem)
+                            .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                Button(action: { }) {
+                                    Label("Delete", systemImage: "trash")
+                                }
+                            }
+                            .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                                Button(action: { }) {
+                                    if todoItem.isCompleted {
+                                        Label("Incomplete", systemImage: "checkmark.circle.dotted")
+                                    } else {
+                                        Label("Complete", systemImage: "checkmark.circle.fill")
+                                    }
+                                }
+                            }
                     }
+                    .listRowSeparator(.hidden)
                 }
             }
+            .listStyle(.plain)
             .padding()
             .foregroundStyle(.primary)
             .navigationTitle("To-dos")

@@ -14,32 +14,49 @@ struct TodoListView: View {
         NavigationStack {
             List {
                 ForEach(todoItemsVM.todoItems) { todoItem in
-                    NavigationLink(destination: TodoDetailView(todo: todoItem).environmentObject(todoItemsVM)) {
-                        TodoInfoView(todo: todoItem)
-                            .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                                Button(action: { todoItemsVM.deleteTodoItem(todoItem) }) {
-                                    Label("Delete", systemImage: "trash")
-                                }
+                    todoCellWithSwipeActions(todoItem)
+                        .overlay {
+                            NavigationLink(destination: { TodoDetailView(todo: todoItem).environmentObject(todoItemsVM) }) {
+                                EmptyView()
                             }
-                            .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                                Button(action: {
-                                    todoItemsVM.updateIsCompleteStatus(!todoItem.isCompleted, for: todoItem)
-                                }) {
-                                    if todoItem.isCompleted {
-                                        Label("Incomplete", systemImage: "checkmark.circle.dotted")
-                                    } else {
-                                        Label("Complete", systemImage: "checkmark.circle.fill")
-                                    }
-                                }
-                            }
-                    }
-                    .listRowSeparator(.hidden)
+                            .opacity(0)
+                        }
                 }
+                .listRowSeparator(.hidden)
+                .listRowInsets(.init(top: 12, leading: 8, bottom: 12, trailing: 0))
             }
             .listStyle(.plain)
             .padding()
             .foregroundStyle(.primary)
             .navigationTitle("To-dos")
+        }
+    }
+    
+    func todoCellWithSwipeActions(_ todoItem: TodoItem) -> some View {
+        TodoInfoView(todo: todoItem)
+            .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                deleteTodoItemButton(todoItem)
+            }
+            .swipeActions(edge: .leading, allowsFullSwipe: false) {
+                toggleIsCompleteButton(todoItem)
+            }
+    }
+    
+    func deleteTodoItemButton(_ todoItem: TodoItem) -> some View {
+        Button(action: { todoItemsVM.deleteTodoItem(todoItem) }) {
+            Label("Delete", systemImage: "trash")
+        }
+    }
+    
+    func toggleIsCompleteButton(_ todoItem: TodoItem) -> some View {
+        Button(action: {
+            todoItemsVM.updateIsCompleteStatus(!todoItem.isCompleted, for: todoItem)
+        }) {
+            if todoItem.isCompleted {
+                Label("Incomplete", systemImage: "checkmark.circle.dotted")
+            } else {
+                Label("Complete", systemImage: "checkmark.circle.fill")
+            }
         }
     }
 }

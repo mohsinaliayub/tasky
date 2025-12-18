@@ -33,23 +33,26 @@ struct TodoInfoView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(todo.title)
-                .font(.body)
-                .kerning(1)
-                .padding(.vertical, 8)
-                .multilineTextAlignment(.leading)
-                .lineLimit(1)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .overlay {
-                    if todo.isCompleted {
-                        Rectangle()
-                            .fill(.black)
-                            .frame(height: 1)
-                    }
-                }
+            title.padding(.vertical, 8)
             Divider()
         }
         .foregroundStyle(todo.isCompleted ? .gray.opacity(0.7) : .primary)
+    }
+    
+    var title: some View {
+        Text(todo.title)
+            .font(.body)
+            .kerning(1)
+            .multilineTextAlignment(.leading)
+            .lineLimit(1)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .overlay {
+                if todo.isCompleted {
+                    Rectangle()
+                        .fill(.black)
+                        .frame(height: 1)
+                }
+            }
     }
 }
 

@@ -12,23 +12,27 @@ struct TodoListView: View {
     
     var body: some View {
         NavigationStack {
-            List {
-                ForEach(todoItemsVM.todoItems) { todoItem in
-                    todoCellWithSwipeActions(todoItem)
-                        .overlay {
-                            NavigationLink(destination: { TodoDetailView(todo: todoItem).environmentObject(todoItemsVM) }) {
-                                EmptyView()
-                            }
+            listOfTodoItems
+                .listStyle(.plain)
+                .padding()
+                .foregroundStyle(.primary)
+                .navigationTitle("To-dos")
+        }
+    }
+    
+    var listOfTodoItems: some View {
+        List {
+            ForEach(todoItemsVM.todoItems) { todoItem in
+                todoCellWithSwipeActions(todoItem)
+                    .overlay {
+                        let destination = TodoDetailView(todo: todoItem)
+                            .environmentObject(todoItemsVM)
+                        NavigationLink(destination: destination, label: { EmptyView() })
                             .opacity(0)
-                        }
-                }
-                .listRowSeparator(.hidden)
-                .listRowInsets(.init(top: 8, leading: 8, bottom: 8, trailing: 0))
+                    }
             }
-            .listStyle(.plain)
-            .padding()
-            .foregroundStyle(.primary)
-            .navigationTitle("To-dos")
+            .listRowSeparator(.hidden)
+            .listRowInsets(.init(top: 8, leading: 8, bottom: 8, trailing: 0))
         }
     }
     

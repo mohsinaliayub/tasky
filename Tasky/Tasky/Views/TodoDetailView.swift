@@ -34,6 +34,7 @@ struct TodoDetailView: View {
         }
         .padding()
         .navigationTitle("To-do Detail")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

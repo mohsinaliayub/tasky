@@ -1,5 +1,5 @@
 //
-//  TodoItemsManager.swift
+//  InMemoryTodoItemsManager.swift
 //  Tasky
 //
 //  Created by Mohsin Ali Ayub on 17.12.25.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TodoItemsManager {
+struct InMemoryTodoItemsManager {
     private(set) var todoItems: [TodoItem]
     
     init() {

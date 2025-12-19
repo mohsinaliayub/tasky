@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 class TodoListViewModel: ObservableObject {
-    @Published private var todoManager = TodoItemsManager()
+    @Published private var todoManager = InMemoryTodoItemsManager()
     
     var todoItems: [TodoItem] {
         todoManager.todoItems

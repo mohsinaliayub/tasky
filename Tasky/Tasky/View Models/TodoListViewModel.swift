@@ -6,10 +6,11 @@
 //
 
 import Foundation
-import Combine
+import SwiftUI
 
-class TodoListViewModel: ObservableObject {
-    @Published private var todoManager = InMemoryTodoItemsManager()
+@Observable
+class TodoListViewModel {
+    private var todoManager = InMemoryTodoItemsManager()
     
     var todoItems: [TodoItem] {
         todoManager.todoItems
@@ -26,6 +27,17 @@ class TodoListViewModel: ObservableObject {
     func deleteTodoItem(_ todoItem: TodoItem) {
         todoManager.deleteTodoItem(todoItem)
     }
+}
+
+extension EnvironmentValues {
+    var todoListVM: TodoListViewModel {
+        get { self[TodoListViewModelKey.self] }
+        set { self[TodoListViewModelKey.self] = newValue }
+    }
+}
+
+fileprivate struct TodoListViewModelKey: EnvironmentKey {
+    static var defaultValue = TodoListViewModel()
 }
 
 extension TodoItem: CustomDebugStringConvertible {

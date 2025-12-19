@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import Observation
 
 struct TodoListView: View {
-    @ObservedObject var todoItemsVM: TodoListViewModel
+    @Environment(\.todoListVM) private var todoItemsVM: TodoListViewModel
     
     var body: some View {
         NavigationStack {
@@ -26,7 +27,7 @@ struct TodoListView: View {
                 todoCellWithSwipeActions(todoItem)
                     .overlay {
                         let destination = TodoDetailView(todo: todoItem)
-                            .environmentObject(todoItemsVM)
+                            .environment(\.todoListVM, todoItemsVM)
                         NavigationLink(destination: destination, label: { EmptyView() })
                             .opacity(0)
                     }
@@ -94,5 +95,6 @@ struct TodoInfoView: View {
 }
 
 #Preview {
-    TodoListView(todoItemsVM: TodoListViewModel())
+    TodoListView()
+        .environment(\.todoListVM, TodoListViewModel())
 }

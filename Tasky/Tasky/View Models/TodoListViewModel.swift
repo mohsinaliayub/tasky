@@ -1,5 +1,5 @@
 //
-//  InMemoryTodoListViewModel.swift
+//  TodoListViewModel.swift
 //  Tasky
 //
 //  Created by Mohsin Ali Ayub on 17.12.25.
@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class InMemoryTodoListViewModel: ObservableObject {
+class TodoListViewModel: ObservableObject {
     @Published private var todoManager = TodoItemsManager()
     
     var todoItems: [TodoItem] {

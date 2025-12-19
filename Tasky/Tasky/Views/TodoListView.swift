@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TodoListView: View {
-    @ObservedObject var todoItemsVM: InMemoryTodoListViewModel
+    @ObservedObject var todoItemsVM: TodoListViewModel
     
     var body: some View {
         NavigationStack {
@@ -94,5 +94,5 @@ struct TodoInfoView: View {
 }
 
 #Preview {
-    TodoListView(todoItemsVM: InMemoryTodoListViewModel())
+    TodoListView(todoItemsVM: TodoListViewModel())
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TodoDetailView: View {
     let todo: TodoItem
-    @EnvironmentObject private var todoItemsVM: InMemoryTodoListViewModel
+    @EnvironmentObject private var todoItemsVM: TodoListViewModel
     @State private var todoTitle = ""
     @FocusState private var focused: Bool
     
@@ -39,7 +39,7 @@ struct TodoDetailView: View {
 }
 
 #Preview {
-    @ObservedObject var vm = InMemoryTodoListViewModel()
+    @ObservedObject var vm = TodoListViewModel()
     
     TodoDetailView(todo: TodoItem(title: "Learn iOS development"))
         .environmentObject(vm)

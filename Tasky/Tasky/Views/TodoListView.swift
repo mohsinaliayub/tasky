@@ -16,7 +16,6 @@ struct TodoListView: View {
             listOfTodoItems
                 .listStyle(.plain)
                 .padding()
-                .foregroundStyle(.primary)
                 .navigationTitle("To-dos")
         }
     }
@@ -42,7 +41,7 @@ struct TodoListView: View {
             .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                 deleteTodoItemButton(todoItem)
             }
-            .swipeActions(edge: .leading, allowsFullSwipe: false) {
+            .swipeActions(edge: .leading, allowsFullSwipe: true) {
                 toggleIsCompleteButton(todoItem)
             }
     }
@@ -85,11 +84,10 @@ struct TodoInfoView: View {
             .lineLimit(1)
             .frame(maxWidth: .infinity, alignment: .leading)
             .overlay {
-                if todo.isCompleted {
-                    Rectangle()
-                        .fill(.black)
-                        .frame(height: 1)
-                }
+                Rectangle()
+                    .fill(.black)
+                    .frame(height: 1)
+                    .opacity(todo.isCompleted ? 1 : 0)
             }
     }
 }
